@@ -1,0 +1,566 @@
+{
+  "models": {
+    "Tag": {
+      "properties": {
+        "tagType": {
+          "type": "String",
+          "defaultValue": "tag",
+          "search": {
+            "type": "keyword"
+          }
+        },
+        "name": {
+          "type": "String",
+          "validation": [
+            "nonEmpty"
+          ]
+        },
+        "description": {
+          "type": "String",
+          "editor": "textarea"
+        },
+        "published": {
+          "type": "Boolean",
+          "defaultValue": true
+        },
+        "translations": {
+          "type": "Object",
+          "properties": {
+            "en": {
+              "type": "Object",
+              "properties": {
+                "name": {
+                  "type": "String"
+                },
+                "description": {
+                  "type": "String",
+                  "editor": "textarea"
+                }
+              }
+            },
+            "pl": {
+              "type": "Object",
+              "properties": {
+                "name": {
+                  "type": "String"
+                },
+                "description": {
+                  "type": "String",
+                  "editor": "textarea"
+                }
+              }
+            }
+          }
+        }
+      },
+      "name": "Tag",
+      "display": [
+        "name",
+        "country"
+      ],
+      "crud": {
+        "deleteTrigger": true,
+        "writeOptions": {}
+      },
+      "search": true,
+      "searchIndex": "reall_tags_tag",
+      "onChange": [
+        null
+      ]
+    },
+    "SelectedTags": {
+      "properties": {
+        "user": {
+          "type": "users:User",
+          "index": true
+        },
+        "session": {
+          "type": "session:Session",
+          "index": true
+        },
+        "tagsType": {
+          "type": "String",
+          "defaultValue": "tag"
+        },
+        "tags": {
+          "type": "Array",
+          "of": {
+            "type": null
+          }
+        }
+      },
+      "name": "SelectedTags",
+      "crud": {
+        "deleteTrigger": true,
+        "writeOptions": {}
+      },
+      "indexes": {
+        "user": {
+          "name": "user",
+          "property": "user"
+        },
+        "session": {
+          "name": "session",
+          "property": "session"
+        }
+      }
+    }
+  },
+  "actions": {
+    "proposeTag": {
+      "properties": {
+        "name": {
+          "type": "String",
+          "validation": [
+            "nonEmpty"
+          ]
+        },
+        "tagType": {
+          "type": "String",
+          "defaultValue": "tag"
+        },
+        "language": {
+          "type": "String"
+        }
+      },
+      "name": "proposeTag",
+      "returns": null
+    },
+    "SelectTag": {
+      "properties": {
+        "tagType": {
+          "type": "String",
+          "defaultValue": "tag"
+        },
+        "tag": {
+          "type": null
+        }
+      },
+      "name": "SelectTag",
+      "returns": null
+    },
+    "DeselectTag": {
+      "properties": {
+        "tagType": {
+          "type": "String",
+          "defaultValue": "tag"
+        },
+        "tag": {
+          "type": null
+        }
+      },
+      "name": "DeselectTag",
+      "returns": null
+    },
+    "TagCreate": {
+      "properties": {
+        "tagType": {
+          "type": "String",
+          "defaultValue": "tag",
+          "search": {
+            "type": "keyword"
+          },
+          "idOnly": false
+        },
+        "name": {
+          "type": "String",
+          "validation": [
+            "nonEmpty"
+          ],
+          "idOnly": false
+        },
+        "description": {
+          "type": "String",
+          "editor": "textarea",
+          "idOnly": false
+        },
+        "published": {
+          "type": "Boolean",
+          "defaultValue": true,
+          "idOnly": false
+        },
+        "translations": {
+          "type": "Object",
+          "properties": {
+            "en": {
+              "type": "Object",
+              "properties": {
+                "name": {
+                  "type": "String"
+                },
+                "description": {
+                  "type": "String",
+                  "editor": "textarea"
+                }
+              }
+            },
+            "pl": {
+              "type": "Object",
+              "properties": {
+                "name": {
+                  "type": "String"
+                },
+                "description": {
+                  "type": "String",
+                  "editor": "textarea"
+                }
+              }
+            }
+          },
+          "idOnly": false
+        }
+      },
+      "name": "TagCreate",
+      "returns": {
+        "type": "Tag",
+        "idOnly": true
+      }
+    },
+    "TagUpdate": {
+      "properties": {
+        "tag": {
+          "type": "Tag",
+          "idOnly": true
+        },
+        "tagType": {
+          "type": "String",
+          "defaultValue": "tag",
+          "search": {
+            "type": "keyword"
+          },
+          "idOnly": false
+        },
+        "name": {
+          "type": "String",
+          "validation": [
+            "nonEmpty"
+          ],
+          "idOnly": false
+        },
+        "description": {
+          "type": "String",
+          "editor": "textarea",
+          "idOnly": false
+        },
+        "published": {
+          "type": "Boolean",
+          "defaultValue": true,
+          "idOnly": false
+        },
+        "translations": {
+          "type": "Object",
+          "properties": {
+            "en": {
+              "type": "Object",
+              "properties": {
+                "name": {
+                  "type": "String"
+                },
+                "description": {
+                  "type": "String",
+                  "editor": "textarea"
+                }
+              }
+            },
+            "pl": {
+              "type": "Object",
+              "properties": {
+                "name": {
+                  "type": "String"
+                },
+                "description": {
+                  "type": "String",
+                  "editor": "textarea"
+                }
+              }
+            }
+          },
+          "idOnly": false
+        }
+      },
+      "name": "TagUpdate",
+      "returns": {
+        "type": "Tag",
+        "idOnly": true
+      }
+    },
+    "TagDelete": {
+      "properties": {
+        "tag": {
+          "type": "Tag",
+          "idOnly": true
+        }
+      },
+      "name": "TagDelete",
+      "returns": {
+        "type": null
+      }
+    },
+    "SelectedTagsCreate": {
+      "properties": {
+        "user": {
+          "type": "users:User",
+          "index": true,
+          "idOnly": false
+        },
+        "session": {
+          "type": "session:Session",
+          "index": true,
+          "idOnly": false
+        },
+        "tagsType": {
+          "type": "String",
+          "defaultValue": "tag",
+          "idOnly": false
+        },
+        "tags": {
+          "type": "Array",
+          "of": {
+            "type": null
+          },
+          "idOnly": false
+        }
+      },
+      "name": "SelectedTagsCreate",
+      "returns": {
+        "type": "SelectedTags",
+        "idOnly": true
+      }
+    },
+    "SelectedTagsUpdate": {
+      "properties": {
+        "selectedTags": {
+          "type": "SelectedTags",
+          "idOnly": true
+        },
+        "user": {
+          "type": "users:User",
+          "index": true,
+          "idOnly": false
+        },
+        "session": {
+          "type": "session:Session",
+          "index": true,
+          "idOnly": false
+        },
+        "tagsType": {
+          "type": "String",
+          "defaultValue": "tag",
+          "idOnly": false
+        },
+        "tags": {
+          "type": "Array",
+          "of": {
+            "type": null
+          },
+          "idOnly": false
+        }
+      },
+      "name": "SelectedTagsUpdate",
+      "returns": {
+        "type": "SelectedTags",
+        "idOnly": true
+      }
+    },
+    "SelectedTagsDelete": {
+      "properties": {
+        "selectedTags": {
+          "type": "SelectedTags",
+          "idOnly": true
+        }
+      },
+      "name": "SelectedTagsDelete",
+      "returns": {
+        "type": null
+      }
+    }
+  },
+  "views": {
+    "findTags": {
+      "properties": {
+        "query": {
+          "type": "String",
+          "validation": [
+            "nonEmpty"
+          ]
+        },
+        "tagsType": {
+          "type": "String",
+          "defaultValue": "tag"
+        }
+      },
+      "name": "findTags",
+      "returns": {
+        "type": "Array",
+        "of": {
+          "type": "Tag"
+        }
+      },
+      "rawRead": true
+    },
+    "MySelectedTags": {
+      "properties": {
+        "tagsType": {
+          "type": "String",
+          "defaultValue": "tag"
+        }
+      },
+      "name": "MySelectedTags",
+      "returns": {
+        "type": null
+      },
+      "rawRead": true
+    },
+    "UserSelectedTags": {
+      "properties": {
+        "user": {
+          "type": "users:User"
+        },
+        "tagsType": {
+          "type": "String",
+          "defaultValue": "tag"
+        }
+      },
+      "name": "UserSelectedTags",
+      "returns": {
+        "type": null
+      },
+      "rawRead": true
+    },
+    "TagOne": {
+      "properties": {
+        "tag": {
+          "type": "Tag",
+          "idOnly": true
+        }
+      },
+      "name": "TagOne",
+      "returns": {
+        "type": "Tag"
+      }
+    },
+    "TagAll": {
+      "properties": {},
+      "name": "TagAll",
+      "returns": {
+        "type": "Array",
+        "of": {
+          "type": "Tag"
+        }
+      }
+    },
+    "SelectedTagsOne": {
+      "properties": {
+        "selectedTags": {
+          "type": "SelectedTags",
+          "idOnly": true
+        }
+      },
+      "name": "SelectedTagsOne",
+      "returns": {
+        "type": "SelectedTags"
+      }
+    },
+    "SelectedTagsAll": {
+      "properties": {},
+      "name": "SelectedTagsAll",
+      "returns": {
+        "type": "Array",
+        "of": {
+          "type": "SelectedTags"
+        }
+      }
+    }
+  },
+  "events": {
+    "tagSelected": {
+      "properties": {},
+      "name": "tagSelected",
+      "returns": null
+    },
+    "tagDeselected": {
+      "properties": {},
+      "name": "tagDeselected",
+      "returns": null
+    },
+    "tagsUpdated": {
+      "properties": {},
+      "name": "tagsUpdated",
+      "returns": null
+    },
+    "tagsRemoved": {
+      "properties": {},
+      "name": "tagsRemoved",
+      "returns": null
+    },
+    "TagCreated": {
+      "properties": {},
+      "name": "TagCreated",
+      "returns": null
+    },
+    "TagUpdated": {
+      "properties": {},
+      "name": "TagUpdated",
+      "returns": null
+    },
+    "TagDeleted": {
+      "properties": {},
+      "name": "TagDeleted",
+      "returns": null
+    },
+    "SelectedTagsCreated": {
+      "properties": {},
+      "name": "SelectedTagsCreated",
+      "returns": null
+    },
+    "SelectedTagsUpdated": {
+      "properties": {},
+      "name": "SelectedTagsUpdated",
+      "returns": null
+    },
+    "SelectedTagsDeleted": {
+      "properties": {},
+      "name": "SelectedTagsDeleted",
+      "returns": null
+    }
+  },
+  "foreignModels": {
+    "session_Session": {
+      "serviceName": "session",
+      "modelName": "Session"
+    },
+    "users_User": {
+      "serviceName": "users",
+      "modelName": "User"
+    }
+  },
+  "triggers": {
+    "OnLogin": {
+      "properties": {
+        "user": {
+          "type": "users:User"
+        },
+        "session": {
+          "type": "session:Session"
+        }
+      },
+      "name": "OnLogin",
+      "returns": null
+    },
+    "OnRegisterStart": {
+      "properties": {
+        "user": {
+          "type": "users:User"
+        },
+        "session": {
+          "type": "session:Session"
+        }
+      },
+      "name": "OnRegisterStart",
+      "returns": null
+    }
+  },
+  "validators": {},
+  "name": "tags",
+  "eventSourcing": true
+}
