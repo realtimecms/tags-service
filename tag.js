@@ -219,8 +219,7 @@ definition.view({
       type: Tag
     }
   },
-  rawRead: true,
-  async fetch({ query, tagsType }, {client, service}) {
+  async fetch({ query, tagsType }, { client, service }) {
     const search = await app.connectToSearch()
     const searchQuery = {
       index: Tag.searchIndex,
