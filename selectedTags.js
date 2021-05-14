@@ -1,5 +1,3 @@
-const app = require('./app.js')
-
 const { tagsTypes } = require("../config/tags.js")
 
 const definition = require("./definition.js")
